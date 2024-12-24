@@ -110,3 +110,17 @@
         )
     )
 )
+
+;; Calculates the rewards for a user based on their stake and the number of blocks
+(define-private (calculate-rewards (user principal) (blocks uint))
+    (let
+        (
+            (staking-position (unwrap! (map-get? StakingPositions user) u0))
+            (user-position (unwrap! (map-get? UserPositions user) u0))
+            (stake-amount (get amount staking-position))
+            (base-rate (var-get base-reward-rate))
+            (multiplier (get rewards-multiplier user-position))
+        )
+        (/ (* (* (* stake-amount base-rate) multiplier) blocks) u14400000)
+    )
+)
