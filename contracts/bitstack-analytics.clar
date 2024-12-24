@@ -124,3 +124,20 @@
         (/ (* (* (* stake-amount base-rate) multiplier) blocks) u14400000)
     )
 )
+
+;; Validates the proposal description length
+(define-private (is-valid-description (desc (string-utf8 256)))
+    (and 
+        (>= (len desc) u10)   ;; Minimum description length
+        (<= (len desc) u256)  ;; Maximum description length
+    )
+)
+
+;; Validates the lock period
+(define-private (is-valid-lock-period (lock-period uint))
+    (or 
+        (is-eq lock-period u0)   ;; No lock
+        (is-eq lock-period u4320) ;; 1 month
+        (is-eq lock-period u8640) ;; 2 months
+    )
+)
