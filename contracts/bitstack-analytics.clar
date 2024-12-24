@@ -1,0 +1,27 @@
+;; Title
+;; Bitstack Decentralized Analytics Smart Contract
+
+;; Summary
+;; This smart contract facilitates decentralized analytics by allowing users to stake STX tokens, participate in governance, and earn rewards.
+;; It includes functionalities for staking, unstaking, creating proposals, and voting.
+
+;; Description
+;; The Bitstack Decentralized Analytics Smart Contract is designed to manage a decentralized analytics platform.
+;; It defines a fungible token (ANALYTICS-TOKEN) and includes several constants for error handling and configuration.
+;; The contract maintains various data variables and maps to track the state of the contract, user positions, staking positions, and governance proposals.
+
+;; The contract ensures secure and efficient management of staking, rewards, and governance, promoting a decentralized approach to analytics.
+
+;; token definitions
+(define-fungible-token ANALYTICS-TOKEN u0)
+
+;; constants
+(define-constant CONTRACT-OWNER tx-sender)
+(define-constant ERR-NOT-AUTHORIZED (err u1000))
+(define-constant ERR-INVALID-PROTOCOL (err u1001))
+(define-constant ERR-INVALID-AMOUNT (err u1002))
+(define-constant ERR-INSUFFICIENT-STX (err u1003))
+(define-constant ERR-COOLDOWN-ACTIVE (err u1004))
+(define-constant ERR-NO-STAKE (err u1005))
+(define-constant ERR-BELOW-MINIMUM (err u1006))
+(define-constant ERR-PAUSED (err u1007))
