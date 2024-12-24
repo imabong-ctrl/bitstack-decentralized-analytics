@@ -65,3 +65,24 @@
         rewards-multiplier: uint
     }
 )
+
+(define-map StakingPositions
+    principal
+    {
+        amount: uint,
+        start-block: uint,
+        last-claim: uint,
+        lock-period: uint,
+        cooldown-start: (optional uint),
+        accumulated-rewards: uint
+    }
+)
+
+(define-map TierLevels
+    uint
+    {
+        minimum-stake: uint,
+        reward-multiplier: uint,
+        features-enabled: (list 10 bool)
+    }
+)
